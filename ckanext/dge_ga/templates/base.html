@@ -1,26 +1,11 @@
 {% ckan_extends %}
-{{  g.ga_send_stats }}
-
-{% block links %}
-  {{ super() }}
-  {% block googleanalytics_header %}
-  {% if h.dge_ga_send_stats() == True %}
-    {{ h.dge_ga_googleanalytics_header() }}
-  {% endif %}
-  {% endblock %}
-{% endblock %}
 
 {% block scripts %}
   {{ super() }}
   {% asset 'ckanext-dge-ga/dge-seo-pages-js' %}
-  <div id="gtm-config" class="js-hide" data-gtmid="{{ config.get('googletagmanager_id') }}"></div>
   {% asset 'ckanext-dge-ga/dge-seo-events-js' %}
-  {% block googleanalytics_event_tracking %}
-    {% if h.dge_ga_send_stats() == True %}
-      {% asset 'ckanext-dge-ga/dge_ga_event_tracking' %}
-      <div class="js-hide" data-module="google-analytics"
-        data-module-googleanalytics_resource_prefix="{{ g.googleanalytics_resource_prefix }}">
-      </div>
-    {% endif %}
-  {% endblock %}
+    <div id="ga-config"
+      data-ga-id="{{ config.get('googleanalytics.id') }}"
+      class="js-hide">
+    </div>
 {% endblock %}
