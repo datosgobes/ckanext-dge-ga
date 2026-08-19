@@ -2,10 +2,12 @@
 
 {% block scripts %}
   {{ super() }}
-  {% asset 'ckanext-dge-ga/dge-seo-pages-js' %}
-  {% asset 'ckanext-dge-ga/dge-seo-events-js' %}
     <div id="ga-config"
       data-ga-id="{{ config.get('googleanalytics.id') }}"
       class="js-hide">
     </div>
+    <div id="gtm-config"
+      data-gtmid="{{ config.get('googletagmanager_id') }}"
+      class="js-hide">
+   </div>
 {% endblock %}
